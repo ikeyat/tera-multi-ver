@@ -21,6 +21,16 @@
                 </dependency>
             </dependencies>
         </profile>
+        <profile>
+            <id>with-sfw</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.terasoluna.gfw</groupId>
+                    <artifactId>terasoluna-gfw-security-core-dependencies</artifactId>
+                    <type>pom</type>
+                </dependency>
+            </dependencies>
+        </profile>
     </profiles>
 
     <dependencies>
