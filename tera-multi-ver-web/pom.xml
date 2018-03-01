@@ -55,6 +55,41 @@
                 </dependency>
             </dependencies>
         </profile>
+
+        <!-- ★gfwとsfwの差を吸収 -->
+        <profile>
+            <id>with-gfw</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.terasoluna.gfw</groupId>
+                    <artifactId>terasoluna-gfw-web</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.terasoluna.gfw</groupId>
+                    <artifactId>terasoluna-gfw-security-web</artifactId>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>with-sfw</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.terasoluna.gfw</groupId>
+                    <artifactId>terasoluna-gfw-web-dependencies</artifactId>
+                    <type>pom</type>
+                </dependency>
+                <dependency>
+                    <groupId>org.terasoluna.gfw</groupId>
+                    <artifactId>terasoluna-gfw-web-jsp-dependencies</artifactId>
+                    <type>pom</type>
+                </dependency>
+                <dependency>
+                    <groupId>org.terasoluna.gfw</groupId>
+                    <artifactId>terasoluna-gfw-security-web-dependencies</artifactId>
+                    <type>pom</type>
+                </dependency>
+            </dependencies>
+        </profile>
     </profiles>
 
     <dependencies>
@@ -64,14 +99,6 @@
         </dependency>
 
         <!-- == Begin TERASOLUNA == -->
-        <dependency>
-            <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-security-web</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.terasoluna.gfw</groupId>
             <artifactId>terasoluna-gfw-recommended-web-dependencies</artifactId>
