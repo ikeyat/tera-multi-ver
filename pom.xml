@@ -5,11 +5,14 @@
     <artifactId>tera-multi-ver</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <!-- ★parentを削除 -->
+    <!--
     <parent>
         <groupId>org.terasoluna.gfw</groupId>
         <artifactId>terasoluna-gfw-parent</artifactId>
         <version>1.0.6.RELEASE</version>
     </parent>
+    -->
 
     <name>TERASOLUNA Global Framework Web Blank Multi Project (MyBatis2)</name>
     <description>Web Blank Multi Project (MyBatis2) using TERASOLUNA Global Framework</description>
@@ -167,6 +170,53 @@
             </plugin>
         </plugins>
     </reporting>
+    <!-- ★<parent>の代替でterasoluna-gfw-parentを取り込み -->
+    <!-- ★profileでgfw/sfwを切り替える(defaultはgfw) -->
+    <profiles>
+        <profile>
+            <id>with-gfw</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.terasoluna.gfw</groupId>
+                        <artifactId>terasoluna-gfw-parent</artifactId>
+                        <version>${gfw.version}</version>
+                        <type>pom</type>
+                        <scope>import</scope>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+        </profile>
+        <profile>
+            <id>with-sfw</id>
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.terasoluna.gfw</groupId>
+                        <artifactId>terasoluna-gfw-parent</artifactId>
+                        <version>${sfw.version}</version>
+                        <type>pom</type>
+                        <scope>import</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.terasoluna.gfw</groupId>
+                        <artifactId>terasoluna-gfw-mybatis2</artifactId>
+                        <version>${gfw.version}</version>
+                        <!--<exclusions>
+                            <exclusion>
+                                <groupId>a</groupId>
+                                <artifactId>b</artifactId>
+                            </exclusion>
+                        </exclusions>-->
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+        </profile>
+    </profiles>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -184,7 +234,7 @@
                 <artifactId>tera-multi-ver-env</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
-    
+
             <!-- Servlet API/ JSP API -->
             <dependency>
                 <groupId>org.apache.tomcat</groupId>
@@ -254,6 +304,9 @@
         <ojdbc.version>12.1.0.2</ojdbc.version>
         <tiles.version>2.2.2</tiles.version>
         <tomcat.api.version>7.0.53</tomcat.api.version>
+        <!-- ★gfw/sfwのバージョン -->
+        <gfw.version>1.0.6.RELEASE</gfw.version>
+        <sfw.version>5.3.1.RELEASE</sfw.version>
     </properties>
   <modules>
     <module>tera-multi-ver-env</module>

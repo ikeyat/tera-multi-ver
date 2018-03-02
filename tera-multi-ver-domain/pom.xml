@@ -10,16 +10,40 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
+    <!-- ★gfwとsfwの差を吸収 -->
+    <profiles>
+        <profile>
+            <id>with-gfw</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.terasoluna.gfw</groupId>
+                    <artifactId>terasoluna-gfw-common</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.terasoluna.gfw</groupId>
+                    <artifactId>terasoluna-gfw-security-core</artifactId>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>with-sfw</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.terasoluna.gfw</groupId>
+                    <artifactId>terasoluna-gfw-common-dependencies</artifactId>
+                    <type>pom</type>
+                </dependency>
+                <dependency>
+                    <groupId>org.terasoluna.gfw</groupId>
+                    <artifactId>terasoluna-gfw-security-core-dependencies</artifactId>
+                    <type>pom</type>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
+
     <dependencies>
         <!-- == Begin TERASOLUNA == -->
-        <dependency>
-            <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-common</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-security-core</artifactId>
-        </dependency>
         <!--  REMOVE THIS LINE IF YOU USE JPA
         <dependency>
             <groupId>org.terasoluna.gfw</groupId>
@@ -56,11 +80,14 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- ★sfwから無くなった。必要なら追加しても良い。 -->
+        <!--
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
             <scope>test</scope>
         </dependency>
+        -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
